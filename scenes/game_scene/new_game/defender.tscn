@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://dl36pv0wdbbrv"]
+
+[ext_resource type="Texture2D" uid="uid://d153tluv40j88" path="res://assets/Tilesheet/scribbleDungeons_characters.svg" id="1_68f88"]
+[ext_resource type="Script" uid="uid://bcc2othnj7waw" path="res://scenes/game_scene/new_game/defender.gd" id="1_f0wtk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0wtk"]
+atlas = ExtResource("1_68f88")
+region = Rect2(548, 68, 44, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68f88"]
+atlas = ExtResource("1_68f88")
+region = Rect2(80, 150, 19, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acks3"]
+atlas = ExtResource("1_68f88")
+region = Rect2(640, 81, 19, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0wtk"]
+radius = 60.0
+
+[sub_resource type="Animation" id="Animation_fagl1"]
+resource_name = "Attack"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collider:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49809653, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_f0wtk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collider:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_acks3"]
+resource_name = "rest"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collider:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fagl1"]
+_data = {
+&"Attack": SubResource("Animation_fagl1"),
+&"RESET": SubResource("Animation_f0wtk"),
+&"rest": SubResource("Animation_acks3")
+}
+
+[node name="Defender" type="Area2D" unique_id=943919475]
+script = ExtResource("1_f0wtk")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=755903929]
+texture = SubResource("AtlasTexture_f0wtk")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=9596516]
+
+[node name="Left" type="Node2D" parent="Weapon" unique_id=976543293]
+
+[node name="Weapon" type="Sprite2D" parent="Weapon/Left" unique_id=1401210707]
+position = Vector2(-40, -16)
+texture = SubResource("AtlasTexture_68f88")
+flip_h = true
+
+[node name="Hand" type="Sprite2D" parent="Weapon/Left" unique_id=1728031681]
+position = Vector2(-40, 0)
+texture = SubResource("AtlasTexture_acks3")
+
+[node name="Right" type="Node2D" parent="Weapon" unique_id=1684244829]
+
+[node name="Weapon" type="Sprite2D" parent="Weapon/Right" unique_id=1263207940]
+position = Vector2(40, -16)
+texture = SubResource("AtlasTexture_68f88")
+
+[node name="Hand" type="Sprite2D" parent="Weapon/Right" unique_id=1177825841]
+position = Vector2(40, 0)
+texture = SubResource("AtlasTexture_acks3")
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=1634903755]
+shape = SubResource("CircleShape2D_f0wtk")
+disabled = true
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=26133215]
+libraries/ = SubResource("AnimationLibrary_fagl1")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c2lnxxm6gv6sl"]
+
+[ext_resource type="Script" uid="uid://7jxxdeautdn2" path="res://scenes/game_scene/new_game/game.gd" id="1_4gyud"]
+[ext_resource type="PackedScene" uid="uid://dl36pv0wdbbrv" path="res://scenes/game_scene/new_game/defender.tscn" id="1_adhui"]
+
+[node name="Game" type="Node2D" unique_id=99012609]
+script = ExtResource("1_4gyud")
+
+[node name="Treasure" type="Marker2D" parent="." unique_id=243314769]
+position = Vector2(640, 360)
+
+[node name="Defender" parent="Treasure" unique_id=943919475 instance=ExtResource("1_adhui")]
+position = Vector2(128, 0)
+rotation = 1.5707964
+
+[node name="Timer" type="Timer" parent="." unique_id=2009614688]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
