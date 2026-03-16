@@ -12,7 +12,7 @@ font_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_yg1uv"]
 radius = 32.984844
 
-[node name="AI Enemy" type="Area2D" unique_id=2137935338]
+[node name="AI Enemy" type="RigidBody2D" unique_id=250439900]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=660466592]
 texture = SubResource("AtlasTexture_lfiq5")

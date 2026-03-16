@@ -4,6 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dl36pv0wdbbrv" path="res://scenes/game_scene/new_game/defender.tscn" id="1_adhui"]
 [ext_resource type="PackedScene" uid="uid://dd27cd3nllwhk" path="res://scenes/game_scene/new_game/artist.tscn" id="2_n146n"]
 
+[sub_resource type="Curve2D" id="Curve2D_n146n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1280, 0, 0, 0, 0, 0, 1280, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Game" type="Node2D" unique_id=99012609]
 script = ExtResource("1_4gyud")
 
@@ -24,5 +30,14 @@ autostart = true
 
 [node name="Attack Timer" type="Timer" parent="." unique_id=761122741]
 
+[node name="Mob Timer" type="Timer" parent="." unique_id=864323348]
+autostart = true
+
+[node name="AI Spawner" type="Path2D" parent="." unique_id=1713534162]
+curve = SubResource("Curve2D_n146n")
+
+[node name="Spawn Location" type="PathFollow2D" parent="AI Spawner" unique_id=158445295]
+
 [connection signal="timeout" from="Rest Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Mob Timer" to="." method="_on_mob_timer_timeout"]
