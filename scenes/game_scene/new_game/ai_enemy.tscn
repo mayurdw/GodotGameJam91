@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bi7bln5hkjve4"]
+
+[ext_resource type="Texture2D" uid="uid://bc64mok3d3om" path="res://assets/Tilesheet/scribbleDungeons_tiles.svg" id="1_yg1uv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfiq5"]
+atlas = ExtResource("1_yg1uv")
+region = Rect2(939, 619, 63, 63)
+
+[sub_resource type="LabelSettings" id="LabelSettings_umfgs"]
+font_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yg1uv"]
+radius = 32.984844
+
+[node name="AI Enemy" type="Area2D" unique_id=2137935338]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=660466592]
+texture = SubResource("AtlasTexture_lfiq5")
+
+[node name="Label" type="Label" parent="." unique_id=771398838]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+text = "AI"
+label_settings = SubResource("LabelSettings_umfgs")
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667950240]
+shape = SubResource("CircleShape2D_yg1uv")

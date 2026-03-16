@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://7jxxdeautdn2" path="res://scenes/game_scene/new_game/game.gd" id="1_4gyud"]
 [ext_resource type="PackedScene" uid="uid://dl36pv0wdbbrv" path="res://scenes/game_scene/new_game/defender.tscn" id="1_adhui"]
+[ext_resource type="PackedScene" uid="uid://dd27cd3nllwhk" path="res://scenes/game_scene/new_game/artist.tscn" id="2_n146n"]
 
 [node name="Game" type="Node2D" unique_id=99012609]
 script = ExtResource("1_4gyud")
+
+[node name="Artist" parent="." unique_id=1332559466 instance=ExtResource("2_n146n")]
+position = Vector2(640, 360)
 
 [node name="Treasure" type="Marker2D" parent="." unique_id=243314769]
 position = Vector2(640, 360)
@@ -13,8 +17,12 @@ position = Vector2(640, 360)
 position = Vector2(128, 0)
 rotation = 1.5707964
 
-[node name="Timer" type="Timer" parent="." unique_id=2009614688]
-wait_time = 2.0
+[node name="Rest Timer" type="Timer" parent="." unique_id=2009614688]
+wait_time = 1.5
+one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Attack Timer" type="Timer" parent="." unique_id=761122741]
+
+[connection signal="timeout" from="Rest Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]

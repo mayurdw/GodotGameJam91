@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dd27cd3nllwhk"]
+
+[ext_resource type="Texture2D" uid="uid://bc64mok3d3om" path="res://assets/Tilesheet/scribbleDungeons_tiles.svg" id="1_5yljj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbvfy"]
+atlas = ExtResource("1_5yljj")
+region = Rect2(1098, 68, 64, 44)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbhqu"]
+font_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
+
+[node name="Artist" type="Node2D" unique_id=1332559466]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1568095384]
+texture = SubResource("AtlasTexture_pbvfy")
+
+[node name="Label" type="Label" parent="." unique_id=540739565]
+offset_left = -22.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 12.0
+text = "Artist"
+label_settings = SubResource("LabelSettings_wbhqu")
