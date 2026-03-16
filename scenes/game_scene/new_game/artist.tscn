@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dd27cd3nllwhk"]
 
 [ext_resource type="Texture2D" uid="uid://bc64mok3d3om" path="res://assets/Tilesheet/scribbleDungeons_tiles.svg" id="1_5yljj"]
+[ext_resource type="Script" uid="uid://ccrksm3nbn71b" path="res://scenes/game_scene/new_game/artist.gd" id="1_pbvfy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbvfy"]
 atlas = ExtResource("1_5yljj")
@@ -9,7 +10,12 @@ region = Rect2(1098, 68, 64, 44)
 [sub_resource type="LabelSettings" id="LabelSettings_wbhqu"]
 font_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
 
-[node name="Artist" type="Node2D" unique_id=1332559466]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yljj"]
+size = Vector2(48, 32)
+
+[node name="Artist" type="StaticBody2D" unique_id=1741631157]
+collision_mask = 16
+script = ExtResource("1_pbvfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1568095384]
 texture = SubResource("AtlasTexture_pbvfy")
@@ -21,3 +27,11 @@ offset_right = 21.0
 offset_bottom = 12.0
 text = "Artist"
 label_settings = SubResource("LabelSettings_wbhqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897818758]
+shape = SubResource("RectangleShape2D_5yljj")
+
+[node name="Timer" type="Timer" parent="." unique_id=565341613]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

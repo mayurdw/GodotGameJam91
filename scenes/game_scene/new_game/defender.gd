@@ -12,3 +12,7 @@ func attack() -> void:
 
 func rest() -> void:
 	animator.play("rest")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	body.queue_free()

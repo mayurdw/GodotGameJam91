@@ -13,6 +13,8 @@ font_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
 radius = 32.984844
 
 [node name="AI Enemy" type="RigidBody2D" unique_id=250439900]
+collision_layer = 16
+collision_mask = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=660466592]
 texture = SubResource("AtlasTexture_lfiq5")
@@ -28,3 +30,5 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667950240]
 shape = SubResource("CircleShape2D_yg1uv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
