@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://bi7bln5hkjve4"]
 
+[ext_resource type="Script" uid="uid://d1qepkfakbuwf" path="res://scenes/game_scene/new_game/ai_enemy.gd" id="1_lfiq5"]
 [ext_resource type="Texture2D" uid="uid://bc64mok3d3om" path="res://assets/Tilesheet/scribbleDungeons_tiles.svg" id="1_yg1uv"]
+[ext_resource type="Texture2D" uid="uid://d153tluv40j88" path="res://assets/Tilesheet/scribbleDungeons_characters.svg" id="3_umfgs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yg1uv"]
+radius = 32.984844
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfiq5"]
 atlas = ExtResource("1_yg1uv")
@@ -9,17 +14,229 @@ region = Rect2(939, 619, 63, 63)
 [sub_resource type="LabelSettings" id="LabelSettings_umfgs"]
 font_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yg1uv"]
-radius = 32.984844
+[sub_resource type="AtlasTexture" id="AtlasTexture_nll2n"]
+atlas = ExtResource("3_umfgs")
+region = Rect2(161, 82, 18, 17)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_goh0o"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 34.0
+spread = 180.0
+initial_velocity_min = 256.0
+initial_velocity_max = 512.0
+angular_velocity_min = 127.999985
+angular_velocity_max = 127.999985
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.7
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.10999998
+
+[sub_resource type="Animation" id="Animation_umfgs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:linear_velocity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_goh0o"]
+resource_name = "attacking"
+length = 0.03333667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nll2n"]
+resource_name = "death"
+length = 0.33333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:linear_velocity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_goh0o"]
+_data = {
+&"RESET": SubResource("Animation_umfgs"),
+&"attacking": SubResource("Animation_goh0o"),
+&"death": SubResource("Animation_nll2n")
+}
 
 [node name="AI Enemy" type="RigidBody2D" unique_id=250439900]
 collision_layer = 16
 collision_mask = 15
+script = ExtResource("1_lfiq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667950240]
+shape = SubResource("CircleShape2D_yg1uv")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=660466592]
+visible = false
 texture = SubResource("AtlasTexture_lfiq5")
 
 [node name="Label" type="Label" parent="." unique_id=771398838]
+visible = false
 offset_left = -20.0
 offset_top = -12.0
 offset_right = 20.0
@@ -28,5 +245,21 @@ text = "AI"
 label_settings = SubResource("LabelSettings_umfgs")
 horizontal_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667950240]
-shape = SubResource("CircleShape2D_yg1uv")
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=888038944]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=906554082]
+emitting = false
+amount = 24
+texture = SubResource("AtlasTexture_nll2n")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_goh0o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1630758607]
+libraries/ = SubResource("AnimationLibrary_goh0o")
+autoplay = &"attacking"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

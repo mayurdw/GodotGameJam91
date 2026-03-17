@@ -39,8 +39,6 @@ func _on_mob_timer_timeout():
 	# Set the mob's position to the random location.
 	mob.position = mob_spawn_location.position
 
-	# Set the mob's direction perpendicular to the path direction.
-
 	# Add some randomness to the direction.
 	mob.look_at(treasure.position)
 

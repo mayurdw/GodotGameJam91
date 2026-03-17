@@ -15,4 +15,5 @@ func rest() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	body.queue_free()
+	if body is AI_Enemy:
+		body.queue_death()
