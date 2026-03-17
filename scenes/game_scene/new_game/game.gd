@@ -24,7 +24,6 @@ func _on_timer_timeout() -> void:
 func _physics_process(delta: float) -> void:
 	treasure.rotation += -1.0 * movement_speed * delta
 
-
 func _on_attack_timer_timeout() -> void:
 	defender.rest()
 	rest_timer.start(rest_time)
@@ -43,7 +42,6 @@ func _on_mob_timer_timeout():
 	# Set the mob's direction perpendicular to the path direction.
 
 	# Add some randomness to the direction.
-	#direction += randf_range(-PI / 4, PI / 4)
 	mob.look_at(treasure.position)
 
 	# Choose the velocity for the mob.

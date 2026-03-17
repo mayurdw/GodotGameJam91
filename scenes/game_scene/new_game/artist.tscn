@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://bc64mok3d3om" path="res://assets/Tilesheet/scribbleDungeons_tiles.svg" id="1_5yljj"]
 [ext_resource type="Script" uid="uid://ccrksm3nbn71b" path="res://scenes/game_scene/new_game/artist.gd" id="1_pbvfy"]
+[ext_resource type="Shader" uid="uid://bwxdh33u27bh7" path="res://scenes/game_scene/new_game/hit_flash.gdshader" id="1_wbhqu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_helue"]
+shader = ExtResource("1_wbhqu")
+shader_parameter/active = true
+shader_parameter/tint = Color(0.9020879, 0.32047427, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbvfy"]
 atlas = ExtResource("1_5yljj")
@@ -10,14 +16,186 @@ region = Rect2(1098, 68, 64, 44)
 [sub_resource type="LabelSettings" id="LabelSettings_wbhqu"]
 font_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
 
+[sub_resource type="Animation" id="Animation_pbvfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.34906584]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wbhqu"]
+resource_name = "rest"
+length = 1.00001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_helue"]
+resource_name = "success"
+length = 0.33333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333337),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.1, 0.19999999, 0.33333337),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.34906584, -0.34906584, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bcpql"]
+resource_name = "theft"
+length = 0.33333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16738912),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0j7cr"]
+_data = {
+&"RESET": SubResource("Animation_pbvfy"),
+&"rest": SubResource("Animation_wbhqu"),
+&"success": SubResource("Animation_helue"),
+&"theft": SubResource("Animation_bcpql")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5yljj"]
 size = Vector2(48, 32)
 
-[node name="Artist" type="StaticBody2D" unique_id=1741631157]
+[node name="Artist" type="Area2D" unique_id=948588695]
+material = SubResource("ShaderMaterial_helue")
+rotation = 0.34906584
 collision_mask = 16
 script = ExtResource("1_pbvfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1568095384]
+use_parent_material = true
 texture = SubResource("AtlasTexture_pbvfy")
 
 [node name="Label" type="Label" parent="." unique_id=540739565]
@@ -28,10 +206,14 @@ offset_bottom = 12.0
 text = "Artist"
 label_settings = SubResource("LabelSettings_wbhqu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897818758]
-shape = SubResource("RectangleShape2D_5yljj")
-
 [node name="Timer" type="Timer" parent="." unique_id=565341613]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1997776191]
+libraries/ = SubResource("AnimationLibrary_0j7cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897818758]
+shape = SubResource("RectangleShape2D_5yljj")
+disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

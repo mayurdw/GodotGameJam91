@@ -30,5 +30,3 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667950240]
 shape = SubResource("CircleShape2D_yg1uv")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
