@@ -43,8 +43,8 @@ func _on_mob_timer_timeout():
 	mob.look_at(treasure.position)
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity.rotated(mob.rotation)
+	mob.direction = Vector2.from_angle(mob.rotation)
+	mob.speed = randf_range(100, 150)
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)

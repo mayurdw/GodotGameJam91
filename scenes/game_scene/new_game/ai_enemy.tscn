@@ -222,10 +222,11 @@ _data = {
 &"death": SubResource("Animation_nll2n")
 }
 
-[node name="AI Enemy" type="RigidBody2D" unique_id=250439900]
+[node name="AI Enemy" type="Area2D" unique_id=89122918]
 collision_layer = 16
 collision_mask = 15
 script = ExtResource("1_lfiq5")
+direction = Vector2(100, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667950240]
 shape = SubResource("CircleShape2D_yg1uv")
@@ -261,5 +262,9 @@ process_material = SubResource("ParticleProcessMaterial_goh0o")
 libraries/ = SubResource("AnimationLibrary_goh0o")
 autoplay = &"attacking"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Timer" type="Timer" parent="." unique_id=527410976]
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

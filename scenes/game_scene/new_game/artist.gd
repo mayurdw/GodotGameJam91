@@ -13,7 +13,7 @@ func on_success() -> void:
 	animation_player.play("success")
 	animation_player.queue("rest")
 
-func _on_body_entered(_body: Node) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	if timer.is_stopped():
 		enemy_contact.emit()
 		animation_player.play("theft")

@@ -216,4 +216,4 @@ libraries/ = SubResource("AnimationLibrary_0j7cr")
 shape = SubResource("RectangleShape2D_5yljj")
 disabled = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
