@@ -14,6 +14,6 @@ func rest() -> void:
 	animator.play("rest")
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_area_entered(body: Area2D) -> void:
 	if body is AI_Enemy:
 		body.queue_death()

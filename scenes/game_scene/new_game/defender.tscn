@@ -195,4 +195,5 @@ libraries/ = SubResource("AnimationLibrary_fagl1")
 next/Attack = &"rest"
 blend_times = [&"Attack", &"rest", 0.5, &"RESET", &"Attack", 0.3, &"RESET", &"rest", 0.3]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

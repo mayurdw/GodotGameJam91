@@ -20,9 +20,10 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	defender.attack()
 	attack_timer.start(attack_time)
-	
+
 func _physics_process(delta: float) -> void:
-	treasure.rotation += -1.0 * movement_speed * delta
+	var axis = Input.get_axis("move_left", "move_right")
+	treasure.rotation += axis * movement_speed * delta
 
 func _on_attack_timer_timeout() -> void:
 	defender.rest()
